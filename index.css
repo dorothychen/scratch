@@ -1,0 +1,43 @@
+html, body {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    color: rgb(10, 10, 10);
+    font-family: "Open Sans", sans-serif;
+
+    height: 100vh;
+}
+
+#container {
+    position: absolute;
+    max-width: 1200px;
+    width: 80vw;
+    height: 80vh;
+
+    left: 0; 
+    right: 0; 
+    top: 0;
+    bottom: 0;
+    margin: auto;
+
+    font-size: 20px;
+}
+
+#header {
+    height: 15%;
+    margin-bottom: 40px;
+
+    font-size: 70px;
+}
+
+#editable {
+    height: 80%;
+    overflow: scroll;
+}
+
+#editable:focus {
+    outline: none;
+}
+

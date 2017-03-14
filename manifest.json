@@ -1,0 +1,22 @@
+{
+  "manifest_version": 2,
+
+  "name": "Scratch",
+  "version": "1.0",
+  "description": "Set your new tab page to a minimalist scratchpad.",
+  "icons": {
+    "16": "icon/icon16.png",
+    "48": "icon/icon48.png",
+    "128": "icon/icon128.png"
+  },
+  "permissions": [
+  ],
+  "browser_action": {
+    "default_title": "",
+    "default_icon": "icon/icon.png"
+  },
+  "chrome_url_overrides" : {
+    "newtab": "newtab.html"
+  },
+  "content_security_policy": "script-src 'self' 'unsafe-eval'; object-src 'self'"
+}
