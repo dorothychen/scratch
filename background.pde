@@ -1,5 +1,6 @@
 color serenity_blue = color(137,171,227);
 
+
 /*
     Convert hex string to RGB array
 */
@@ -50,26 +51,15 @@ void drawBlob(cx, cy, c, blob_dist) {
     while (alpha > 0) {
         fill(c, alpha);
         int d = alphaToDistance(alpha, blob_dist);
-        ellipse(cx + random(-d, d), cy + random(-d, d), r*random(0.9, 1.1), r*random(0.9, 1.1));
+        ellipse(cx + random(-d, d), cy + random(-d, d), r*random(0.95, 1.05), r*random(0.95, 1.05));
         alpha -= 10;
     }
 }
 
-void setup() {
-    // set up window
-    size(window.innerWidth, window.innerHeight); 
-    background("white");
-    noStroke();
-    smooth();
-
-    // draw color units
-    // choose two main colors
-    // BUSY WAITING;; TODO
-    int n;
-    while (!gradientJSON && n < 1000) {
-        n++;
-    }
-
+/*
+    given gradient JSON data, choose a gradient at random and draw all the blobs
+*/
+void drawAllBlobs(gradientJSON) {
     int i = ceil(random(0, gradientJSON.length() - 1));
     int[] color1 = hexToRgb(gradientJSON[i]["colors"][0].substring(1));
     int[] color2 = hexToRgb(gradientJSON[i]["colors"][1].substring(1));
@@ -97,9 +87,25 @@ void setup() {
             cy += random(-120, 120);
         }        
     }
-
 }
 
+void setup() {
+    // set up window
+    size(window.innerWidth, window.innerHeight); 
+    background("white");
+    noStroke();
+    smooth();
+
+    // draw color units
+    // gradients from 
+    // https://github.com/ghosh/uiGradients/blob/master/gradients.json
+    loadJSON("gradients.json",
+        drawAllBlobs, 
+        function(err) {
+            console.log("ERROR");
+            console.log(err);
+        });
+}
 
 
 void draw() {

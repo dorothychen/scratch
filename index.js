@@ -36,14 +36,3 @@ function loadJSON(path, success, error)
     xhr.open("GET", path, true);
     xhr.send();
 }
-
-// gradients from 
-// https://github.com/ghosh/uiGradients/blob/master/gradients.json
-var gradientJSON;
-loadJSON("gradients.json",
-    function(data) {
-        gradientJSON = data;
-    }, function(err) {
-        console.log("ERROR");
-        console.log(err);
-    });
